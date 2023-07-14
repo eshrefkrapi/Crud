@@ -1,3 +1,22 @@
+<?php
+
+include 'connect.php';
+if(isset($_POST['submit'])){
+    $name=$_POST['emri'];
+    $email=$_POST['email'];
+    $mobile=$_POST['mob'];
+    $password=$_POST['pass'];
+
+    $sql="insert into `crudt` (name,email,mobile,password) values('$name','$email','$mobile','$password')";
+    $result=mysqli_query($con,$sql);
+    if($result){
+        echo "Data inserted successfully";
+    }else{
+        die(mysqli_error($con));
+    }
+}
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -32,7 +51,7 @@
     <label for="pass">Password</label>
     <input type="password" class="form-control" id="pass" placeholder="Password" name="pass" autocomplete="off">
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary" name="submit">Submit</button>
 </form>
   </div>
    
